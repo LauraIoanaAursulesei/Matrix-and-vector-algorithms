@@ -645,6 +645,98 @@ int matrixNumberMultiplication(int m, int n, int number, int matrix[50][50])
     return 0;
 }
 
+int addLineAndColumn(int m, int n, int matrix[50][50]) 
+{
+    for (int i = 0; i < m; i++) {
+        int lineSum = 0;
+        for (int j = 0; j < n; j++) {
+            lineSum += matrix[i][j];
+        }
+        matrix[i][n] = lineSum;
+    }
+
+    for (int j = 0; j <= n; j++) {
+        int columnSum = 0;
+        for (int i = 0; i < m; i++) {
+            columnSum += matrix[i][j];
+        }
+        matrix[m][j] = columnSum;
+    }
+
+    printf("The extended matrix is:\n");
+    for (int i = 0; i <= m; i++) {
+        for (int j = 0; j <= n; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+int separateInVectors(int m, int n, int matrix[50][50]) 
+{
+    for (int i = 0; i < m; i++) {
+        printf("The vector coresponding to line %d is: ", i + 1);
+        for (int j = 0; j < n; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+int reverseDiagonals(int n, int matrix[50][50]) 
+{
+    for (int i = 0; i < n; i++) {
+        int temp = matrix[i][i];
+        matrix[i][i] = matrix[i][n - 1 - i];
+        matrix[i][n - 1 - i] = temp;
+    }
+
+    printf("The matrix with reversed diagonals is:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+int matrixTriangles(int n, int matrix[50][50]) 
+{
+    printf("The upper triangle of the matrix is:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (j >= i) {
+                printf("%d ", matrix[i][j]);
+            }
+            else {
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+
+    printf("The lower triangle of the matrix is:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i >= j) {
+                printf("%d ", matrix[i][j]);
+            }
+            else {
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
 int main()
 {
     int opt, n, m, p, q, number, v[50], matrix[50][50], matrixA[50][50], matrixB[50][50], result;
@@ -669,6 +761,10 @@ int main()
         printf("\n 14. Finding the sums of the elements in the 4 zones delimited by the diagonals of a matrix");
         printf("\n 15. The multiplication of two matrices");
         printf("\n 16. Multiplying a matrix with a number");
+        printf("\n 17. Extending a matrix with a line and column where the new elements are the sum of the elements on the respective line/column");
+        printf("\n 18. Separate a matrix in vectors coresponding to each line");
+        printf("\n 19. Reverse the diagonals of a square matrix");
+        printf("\n 20. Display the upper and the lower triangle of a matrix");
         printf("\n 0. EXIT");
         printf("\n Your option is: ");
         scanf("%d", &opt);
@@ -767,6 +863,26 @@ int main()
             scanf("%d", &number);
             readMatrix2(&m, &n, matrix);
             matrixNumberMultiplication(m, n, number, matrix);
+            break;
+
+        case 17:
+            readMatrix2(&m, &n, matrix);
+            addLineAndColumn(m, n, matrix);
+            break;
+
+        case 18:
+            readMatrix2(&m, &n, matrix);
+            separateInVectors(m, n, matrix);
+            break;
+
+        case 19:
+            readMatrix(&n, matrix);
+            reverseDiagonals(n, matrix);
+            break;
+
+        case 20:
+            readMatrix(&n, matrix);
+            matrixTriangles(n, matrix);
             break;
 
         case 0:
