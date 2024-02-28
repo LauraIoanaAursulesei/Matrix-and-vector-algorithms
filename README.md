@@ -24,6 +24,10 @@ This project is a multifunctional application programmed in C that enables users
 14. Finding the sums of the elements in the 4 zones delimited by the diagonals of a matrix
 15. The multiplication of two matrices
 16. Multiplying a matrix with a number
+17. Extending a matrix with a line and column where the new elements are the sum of the elements on the respective line/column
+18. Separate a matrix in vectors coresponding to each line
+19. Reverse the diagonals of a square matrix
+20. Display the upper and the lower triangle of a matrix
 
 ## Usage
 
